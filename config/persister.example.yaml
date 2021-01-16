@@ -1,0 +1,14 @@
+consumer:
+  kafka:
+    cafile: config/cafile.pem
+    certfile: config/certfile.pem
+    keyfile: config/keyfile.pem
+    password: ''
+    bootstrap_servers: kafka-c37afac-project-df5d.aivencloud.com:21509
+    topic: test
+  consumer_group: hwmonitoring
+  # Timeout to wait for batch loading
+  timeout_ms: 10000
+elt:
+  schema: hwmonitoring
+  dsn:

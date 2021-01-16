@@ -1,0 +1,22 @@
+producer:
+  cafile: config/cafile.pem
+  certfile: config/certfile.pem
+  keyfile: config/keyfile.pem
+  password: ''
+  bootstrap_servers: kafka-c37afac-project-df5d.aivencloud.com:21509
+  topic: test
+tasks:
+- delay: 1
+  # Maximum number of tasks running one time for this url
+  max_coroutines: 5
+  url: https://lavkasyrkova.ru/
+  patterns:
+  - span
+  - div
+  - img
+- delay: 1
+  max_coroutines: 5
+  url: https://aiven.io
+  patterns:
+  - dev
+  - data
