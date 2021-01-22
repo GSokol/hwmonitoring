@@ -27,7 +27,7 @@ Usage:
   hwhw-monitoring-persister --config config/persister.yaml
 ```
 
-See the example of config at [config/persister.example.yaml](https://www.github.com/GSokol/whmonitoring/blob/master/config/persister.example.yaml)
+See the example of config at [config/persister.example.yaml](https://github.com/GSokol/hwmonitoring/blob/master/config/persister.example.yaml)
 
 ### Start the scraper:
 
@@ -36,4 +36,4 @@ See the example of config at [config/persister.example.yaml](https://www.github.
   hw-monitoring-scraper --config config/scraper.yaml
 ```
 
-See the example of config at [config/scraper.example.yaml](https://www.github.com/GSokol/whmonitoring/blob/master/config/scraper.example.yaml)
+See the example of config at [config/scraper.example.yaml](https://github.com/GSokol/hwmonitoring/blob/master/config/scraper.example.yaml)
