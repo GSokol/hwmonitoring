@@ -58,7 +58,7 @@ class Task:
         self._logger.debug('Publishing results (latency: %f)',
                            time_metrics.get_value())
 
-        counter[self.url] -= 1
+        counter[self.url.human_repr()] -= 1
         return ModelV1(
             timestamp=timestamp,
             url=self.url.human_repr(),
