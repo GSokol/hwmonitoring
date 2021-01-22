@@ -26,7 +26,7 @@ def main():
     args = parser.parse_args()
     config = parse_config_file(args.config)
     kafka_password = env.str(KAFKA_CERT_PASSWORD_KEY,
-                                     default=config.producer.password)
+                             default=config.producer.password)
     logger = logging.getLogger(__name__)
     if (args.debug):
         logger.setLevel(logging.DEBUG)
@@ -42,11 +42,11 @@ def main():
             config.producer.keyfile, kafka_password,
             config.producer.bootstrap_servers, config.producer.topic, logger),
         tasks=[Task(
-                delay=task.delay, url=URL(task.url),
-                patterns=[re.compile(pattern) for pattern in (
-                    task.patterns or [])],
-                max_coroutines=task.max_coroutines,
-                logger=logger) for task in config.tasks],
+            delay=task.delay, url=URL(task.url),
+            patterns=[re.compile(pattern) for pattern in (
+                task.patterns or [])],
+            max_coroutines=task.max_coroutines,
+            logger=logger) for task in config.tasks],
         logger=logger,
     )
 

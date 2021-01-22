@@ -7,6 +7,7 @@ from yarl import URL
 
 from hwmonitoring.scraper.task import Task
 
+
 def test_task_probe():
     counter = {'https://www.google.com/': 1}
     loop = asyncio.get_event_loop()
@@ -14,8 +15,14 @@ def test_task_probe():
     with aioresponses() as mocked:
         mocked.get('https://www.google.com/', status=200, body='Lalala')
 
-        target = Task(1, URL('https://www.google.com/'), logging.getLogger(), 10,
-                      (re.compile('[Ll]a'), re.compile('ol'),))
+        target = Task(
+            1,
+            URL('https://www.google.com/'),
+            logging.getLogger(),
+            10,
+            (re.compile('[Ll]a'),
+             re.compile('ol'),
+             ))
 
         metrics = loop.run_until_complete(target.exec_probes(session, counter))
 

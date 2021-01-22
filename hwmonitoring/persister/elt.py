@@ -56,7 +56,7 @@ class ELT:
             # Load data
             await self._conn.copy_records_to_table(
                 buffer_table_name,
-                columns=['ts', 'url', 'code', 'latency', 'matches',],
+                columns=['ts', 'url', 'code', 'latency', 'matches', ],
                 records=rows)
 
             # Run tranform

@@ -21,5 +21,6 @@ class ModelV1(NamedTuple):
         """ Recurcively move to dict """
 
         self_dict = self._asdict()
-        self_dict['matches'] = list([match._asdict() for match in self.matches])
+        self_dict['matches'] = list([match._asdict()
+                                     for match in self.matches])
         return self_dict

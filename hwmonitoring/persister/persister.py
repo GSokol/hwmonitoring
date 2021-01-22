@@ -5,6 +5,7 @@ from typing import Iterable
 from .consumer import Consumer
 from .elt import ELT
 
+
 class Persister:
     """ Subscribes to the topic and stores results to the database """
 

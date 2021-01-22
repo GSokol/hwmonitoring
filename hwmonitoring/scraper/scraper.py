@@ -52,7 +52,9 @@ class Scraper:
 
         self._logger.debug('Run periodic "%s"', task.url)
         while self._running:
-            while self._running_tasks.get(task.url.human_repr(), 0) > task.max_coroutines:
+            while self._running_tasks.get(
+                    task.url.human_repr(),
+                    0) > task.max_coroutines:
                 await asyncio.sleep(task.delay)
             self._running_tasks[task.url.human_repr()] = \
                 self._running_tasks.get(task.url.human_repr(), 0) + 1

@@ -58,7 +58,6 @@ def main():
         loop.stop()
         logger.info('Shutdown complete!')
 
-
     loop.add_signal_handler(signal.SIGTERM, shotdown)
     loop.add_signal_handler(signal.SIGINT, shotdown)
 
@@ -66,6 +65,7 @@ def main():
         loop.run_until_complete(persister.start())
     except KeyboardInterrupt:
         shotdown()
+
 
 if __name__ == "__main__":
     main()
