@@ -41,7 +41,7 @@ class Scraper:
             self._loop.create_task(self._periodic(task))
 
     def stop(self) -> None:
-        """ Gracefull shotdown """
+        """ Gracefull shutdown """
 
         self._running = False
         if self._session is not None:

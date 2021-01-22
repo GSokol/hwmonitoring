@@ -50,24 +50,24 @@ def main():
         logger=logger,
     )
 
-    def shotdown():
+    def shutdown():
         logger.info('Shotdown hwmonitoring persister ...')
         scraper.stop()
 
-        time.sleep(2)
+        asyncio.gather(asyncio.sleep(2))
 
         logger.info('Stoping event loop ...')
         loop.stop()
         logger.info('Shutdown complete!')
 
-    loop.add_signal_handler(signal.SIGTERM, shotdown)
-    loop.add_signal_handler(signal.SIGTERM, shotdown)
+    loop.add_signal_handler(signal.SIGTERM, shutdown)
+    loop.add_signal_handler(signal.SIGTERM, shutdown)
 
     try:
         loop.create_task(scraper.start())
         loop.run_forever()
     except KeyboardInterrupt:
-        shotdown()
+        shutdown()
 
 
 if __name__ == "__main__":

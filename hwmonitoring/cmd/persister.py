@@ -43,28 +43,28 @@ def main():
         config.consumer.timeout_ms, logger=logger)
     persister = Persister(loop, elt=elt, consumer=consumer, logger=logger)
 
-    async def shotdown_task():
+    async def shutdown_task():
         persister.stop()
         await consumer.stop()
         await elt.close()
 
-    def shotdown():
+    def shutdown():
         logger.info('Shotdown hwmonitoring persister ...')
-        loop.create_task(shotdown_task())
+        loop.create_task(shutdown_task())
 
-        time.sleep(2)
+        asyncio.gather(asyncio.sleep(2))
 
         logger.info('Stoping event loop ...')
         loop.stop()
         logger.info('Shutdown complete!')
 
-    loop.add_signal_handler(signal.SIGTERM, shotdown)
-    loop.add_signal_handler(signal.SIGINT, shotdown)
+    loop.add_signal_handler(signal.SIGTERM, shutdown)
+    loop.add_signal_handler(signal.SIGINT, shutdown)
 
     try:
         loop.run_until_complete(persister.start())
     except KeyboardInterrupt:
-        shotdown()
+        shutdown()
 
 
 if __name__ == "__main__":
