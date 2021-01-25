@@ -1,5 +1,7 @@
 .venv/
 *.pyc
 *.pem
+build/*
 config/persister.yaml
 config/scraper.yaml
+dist/*
